@@ -126,31 +126,23 @@ def wordCountAnalysis(frequencyDict):
             indexNumber -= 1 #go back an index to view the next word
 
 def wordPlot(frequencyDict, clr, lbl):
-    """
-    wordPlot takes in a wordCount dictionary frequencyDict, a color clr, and a label lbl
-    and plots the top twenty most used words in frequencyDict.
-    Inputs: frequencyDict = a dictionary produced by the wordCount function
-            clr - a string representing a color
-            lbl - a string that will be put in the legend to name the bars
-    Outputs: None
-    """
-    wordsDisplayed = 20 #needed to create the indexes
-    dictKeys = list(frequencyDict.keys()) #needed to plot xticks
-    dictValues = list(frequencyDict.values()) #needed to plot bars
+    wordsDisplayed = 20
+    dictKeys = list(frequencyDict.keys())
+    dictValues = list(frequencyDict.values())
 
     fig, ax = plt.subplots()
-    index = np.arange(wordsDisplayed) #need 20 indexes
-    bar_width = 0.35 #want the bars to be thin
-     
-    bars = plt.bar(index, dictValues[-20:], bar_width,color=clr,label=lbl) #plot the bars indicating the integer of word frequency
-    plt.xlabel('Word') #create the label of the x-axis
-    plt.ylabel('Word Use') #create the label of the y-axis
-    plt.title('Most Frequently Used in Words in State of the Union Addresses') #create the title
-    plt.xticks(index + bar_width, dictKeys[-20:], rotation = 'vertical') #plot the ticks along the x-axis
-    plt.legend(loc = 'upper right', shadow = True) #create the legend
+    index = np.arange(wordsDisplayed)
+    bar_width = 0.35
+    
+    bars = plt.bar(index, dictValues[-20:], bar_width,color=clr,label=lbl)
+    plt.xlabel('Word')
+    plt.ylabel('Word Use')
+    plt.title('Most Frequently Used in Words in State of the Union Addresses')
+    plt.xticks(index, dictKeys[-20:], rotation = 'vertical')
+    plt.legend(loc = 'upper left', shadow = True) #create the legend
                    
     plt.tight_layout()
-    plt.show() #show the graph           
+    plt.show()           
             
 def main():
     """
